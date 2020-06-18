@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
+    count: this.props.value,
   };
 
   handleIncrement = (product) => {
@@ -11,15 +11,15 @@ class Counter extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div>
+        {this.props.children}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button onClick={() => this.handleIncrement(product)} className="btn btn-secondary btn-sm">
+        <button onClick={() => this.handleIncrement(this.product)} className="btn btn-secondary btn-sm">
           Increment
         </button>
-      </React.Fragment>
+      </div>
     );
   }
-
   getBadgeClasses() {
     let classes = "badge m-2 badge-";
     classes += this.state.count === 0 ? "warning" : "primary";
